@@ -1,28 +1,720 @@
 {
   "name": "Ari",
   "model": "ari.tscn",
-  "default": {"hair": "swept", "face": "neutral", "skin": "copper", "outfit": "knit", "glasses": "none"},
+  "default": {
+    "hair": "swept",
+    "face": "neutral",
+    "skin": "copper",
+    "outfit": "knit",
+    "glasses": "none",
+    "hair_color": "plum",
+    "eyes": "almond",
+    "eye_color": "brown",
+    "eyebrows": "soft",
+    "nose": "straight",
+    "trousers": "jeans",
+    "shoes": "coral",
+    "jewelry": "none",
+    "outfit_color": "original"
+  },
   "categories": [
-    {"id": "hair", "label": "Cheveux", "items": [
-      {"id": "swept", "label": "Balayés", "group": "CheveuxBalayes"},
-      {"id": "waves", "label": "Ondulés", "group": "CheveuxOndules"}
-    ]},
-    {"id": "face", "label": "Visage", "items": [
-      {"id": "neutral", "label": "Détendu", "morph": "Sourire", "weight": 0.0},
-      {"id": "smile", "label": "Sourire", "morph": "Sourire", "weight": 1.0}
-    ]},
-    {"id": "skin", "label": "Teint", "items": [
-      {"id": "copper", "label": "Cuivré", "material": "Peau", "color": "#C68158"},
-      {"id": "warm", "label": "Clair", "material": "Peau", "color": "#E6AC88"},
-      {"id": "deep", "label": "Foncé", "material": "Peau", "color": "#81513E"}
-    ]},
-    {"id": "outfit", "label": "Tenue", "items": [
-      {"id": "knit", "label": "Maille", "group": "Pull"},
-      {"id": "jacket", "label": "Blouson", "group": "Blouson"}
-    ]},
-    {"id": "glasses", "label": "Lunettes", "items": [
-      {"id": "none", "label": "Sans", "clear": true},
-      {"id": "round", "label": "Rondes", "group": "Lunettes"}
-    ]}
+    {
+      "id": "hair",
+      "label": "Cheveux",
+      "railGroup": "hair",
+      "railLabel": "Coupe",
+      "items": [
+        {
+          "id": "swept",
+          "label": "Balayés",
+          "group": "CheveuxBalayes"
+        },
+        {
+          "id": "waves",
+          "label": "Ondulés",
+          "group": "CheveuxOndules"
+        },
+        {
+          "id": "crop",
+          "label": "Court",
+          "group": "CheveuxCourts"
+        },
+        {
+          "id": "bun",
+          "label": "Chignon",
+          "group": "CheveuxChignon"
+        },
+        {
+          "id": "bob",
+          "label": "Carré",
+          "group": "CheveuxCarre"
+        },
+        {
+          "id": "pony",
+          "label": "Attachés",
+          "group": "CheveuxAttaches"
+        },
+        {
+          "id": "split",
+          "label": "Raie",
+          "group": "CheveuxRaie"
+        },
+        {
+          "id": "crest",
+          "label": "Crête",
+          "group": "CheveuxCrete"
+        },
+        {
+          "id": "buzz",
+          "label": "Rasés",
+          "group": "CheveuxRases"
+        },
+        {
+          "id": "braids",
+          "label": "Tresses",
+          "group": "CheveuxTresses"
+        },
+        {
+          "id": "long",
+          "label": "Longs",
+          "group": "CheveuxLongs"
+        },
+        {
+          "id": "double_bun",
+          "label": "Deux chignons",
+          "group": "CheveuxDoubleChignon"
+        }
+      ],
+      "framing": "face",
+      "heading": "Style de coiffure",
+      "thumbnailParts": [
+        "Visage",
+        "Oreille",
+        "Oreille2"
+      ]
+    },
+    {
+      "id": "hair_color",
+      "label": "Couleur des cheveux",
+      "railGroup": "hair",
+      "railLabel": "Couleur",
+      "heading": "Couleur des cheveux",
+      "framing": "face",
+      "thumbnailParts": ["Visage", "Oreille", "Oreille2"],
+      "thumbnailFromCategory": "hair",
+      "items": [
+        {
+          "id": "plum",
+          "label": "Brun prune",
+          "material": "Cheveux",
+          "color": "#503342",
+          "tints": {
+            "Volume cheveux": "#624055",
+            "Cheveux foncés": "#382B3C"
+          }
+        },
+        {
+          "id": "black",
+          "label": "Noir",
+          "material": "Cheveux",
+          "color": "#26212B",
+          "tints": {
+            "Volume cheveux": "#3B3543",
+            "Cheveux foncés": "#1C1720"
+          }
+        },
+        {
+          "id": "espresso",
+          "label": "Café",
+          "material": "Cheveux",
+          "color": "#3C2928",
+          "tints": {
+            "Volume cheveux": "#55382E",
+            "Cheveux foncés": "#2A201F"
+          }
+        },
+        {
+          "id": "chocolate",
+          "label": "Chocolat",
+          "material": "Cheveux",
+          "color": "#633F34",
+          "tints": {
+            "Volume cheveux": "#805644",
+            "Cheveux foncés": "#4C302C"
+          }
+        },
+        {
+          "id": "copper",
+          "label": "Roux cuivré",
+          "material": "Cheveux",
+          "color": "#9F4F36",
+          "tints": {
+            "Volume cheveux": "#C47653",
+            "Cheveux foncés": "#74392B"
+          }
+        },
+        {
+          "id": "honey",
+          "label": "Blond miel",
+          "material": "Cheveux",
+          "color": "#AE8050",
+          "tints": {
+            "Volume cheveux": "#D2A469",
+            "Cheveux foncés": "#88633E"
+          }
+        },
+        {
+          "id": "sand",
+          "label": "Blond sable",
+          "material": "Cheveux",
+          "color": "#B7A27E",
+          "tints": {
+            "Volume cheveux": "#D6C3A0",
+            "Cheveux foncés": "#958163"
+          }
+        },
+        {
+          "id": "silver",
+          "label": "Argent",
+          "material": "Cheveux",
+          "color": "#A8A5B7",
+          "tints": {
+            "Volume cheveux": "#CCC8DA",
+            "Cheveux foncés": "#777486"
+          }
+        },
+        {
+          "id": "burgundy",
+          "label": "Bordeaux",
+          "material": "Cheveux",
+          "color": "#702C49",
+          "tints": {
+            "Volume cheveux": "#96405E",
+            "Cheveux foncés": "#502139"
+          }
+        },
+        {
+          "id": "violet",
+          "label": "Violet",
+          "material": "Cheveux",
+          "color": "#644685",
+          "tints": {
+            "Volume cheveux": "#8663A8",
+            "Cheveux foncés": "#493660"
+          }
+        },
+        {
+          "id": "teal",
+          "label": "Bleu pétrole",
+          "material": "Cheveux",
+          "color": "#346A71",
+          "tints": {
+            "Volume cheveux": "#4E8B91",
+            "Cheveux foncés": "#244C54"
+          }
+        },
+        {
+          "id": "rose",
+          "label": "Rose poudré",
+          "material": "Cheveux",
+          "color": "#A66F85",
+          "tints": {
+            "Volume cheveux": "#CA93AA",
+            "Cheveux foncés": "#805369"
+          }
+        }
+      ]
+    },
+    {
+      "id": "skin",
+      "label": "Teint",
+      "heading": "Couleur de peau",
+      "framing": "face",
+      "swatches": true,
+      "items": [
+        {
+          "id": "porcelain",
+          "label": "Porcelaine",
+          "material": "Peau",
+          "color": "#F3C9B3",
+          "tints": {
+            "Intérieur oreille": "#C98E82"
+          }
+        },
+        {
+          "id": "warm",
+          "label": "Clair",
+          "material": "Peau",
+          "color": "#E6AC88",
+          "tints": {
+            "Intérieur oreille": "#BD796C"
+          }
+        },
+        {
+          "id": "peach",
+          "label": "Pêche",
+          "material": "Peau",
+          "color": "#EAB491",
+          "tints": {
+            "Intérieur oreille": "#C07E68"
+          }
+        },
+        {
+          "id": "sand",
+          "label": "Sable",
+          "material": "Peau",
+          "color": "#D7AE8A",
+          "tints": {
+            "Intérieur oreille": "#AA715F"
+          }
+        },
+        {
+          "id": "amber",
+          "label": "Ambré",
+          "material": "Peau",
+          "color": "#CD956B",
+          "tints": {
+            "Intérieur oreille": "#AC6B50"
+          }
+        },
+        {
+          "id": "copper",
+          "label": "Cuivré",
+          "material": "Peau",
+          "color": "#C68158",
+          "tints": {
+            "Intérieur oreille": "#AC573F"
+          }
+        },
+        {
+          "id": "bronze",
+          "label": "Bronzé",
+          "material": "Peau",
+          "color": "#B98764",
+          "tints": {
+            "Intérieur oreille": "#95604E"
+          }
+        },
+        {
+          "id": "olive",
+          "label": "Olive",
+          "material": "Peau",
+          "color": "#A98D67",
+          "tints": {
+            "Intérieur oreille": "#876652"
+          }
+        },
+        {
+          "id": "caramel",
+          "label": "Caramel",
+          "material": "Peau",
+          "color": "#AA6E4D",
+          "tints": {
+            "Intérieur oreille": "#854C3E"
+          }
+        },
+        {
+          "id": "deep",
+          "label": "Foncé",
+          "material": "Peau",
+          "color": "#81513E",
+          "tints": {
+            "Intérieur oreille": "#643933"
+          }
+        },
+        {
+          "id": "ebony",
+          "label": "Ébène",
+          "material": "Peau",
+          "color": "#663F35",
+          "tints": {
+            "Intérieur oreille": "#533132"
+          }
+        },
+        {
+          "id": "umber",
+          "label": "Brun profond",
+          "material": "Peau",
+          "color": "#49302B",
+          "tints": {
+            "Intérieur oreille": "#3E2526"
+          }
+        }
+      ]
+    },
+    {
+      "id": "eyes",
+      "label": "Yeux",
+      "railGroup": "eyes",
+      "railLabel": "Forme",
+      "heading": "Forme des yeux",
+      "framing": "face",
+      "items": [
+        {
+          "id": "almond",
+          "label": "En amande",
+          "group": "YeuxAmande"
+        },
+        {
+          "id": "round",
+          "label": "Ronds",
+          "group": "YeuxRonds"
+        },
+        {
+          "id": "lifted",
+          "label": "Étirés",
+          "group": "YeuxEtires"
+        },
+        {
+          "id": "soft",
+          "label": "Tombants",
+          "group": "YeuxDoux"
+        }
+      ],
+      "thumbnailFraming": "eyes",
+      "thumbnailParts": [
+        "Visage"
+      ]
+    },
+    {
+      "id": "eye_color",
+      "label": "Couleur des yeux",
+      "railGroup": "eyes",
+      "railLabel": "Couleur",
+      "heading": "Couleur des yeux",
+      "framing": "face",
+      "swatches": true,
+      "items": [
+        {
+          "id": "brown",
+          "label": "Marron",
+          "material": "Iris",
+          "color": "#74462B"
+        },
+        {
+          "id": "hazel",
+          "label": "Noisette",
+          "material": "Iris",
+          "color": "#8E7443"
+        },
+        {
+          "id": "amber",
+          "label": "Ambre",
+          "material": "Iris",
+          "color": "#BA7842"
+        },
+        {
+          "id": "green",
+          "label": "Vert",
+          "material": "Iris",
+          "color": "#5A7C4C"
+        },
+        {
+          "id": "jade",
+          "label": "Jade",
+          "material": "Iris",
+          "color": "#3F766D"
+        },
+        {
+          "id": "blue",
+          "label": "Bleu",
+          "material": "Iris",
+          "color": "#487CB1"
+        },
+        {
+          "id": "grey",
+          "label": "Gris",
+          "material": "Iris",
+          "color": "#788797"
+        },
+        {
+          "id": "dark",
+          "label": "Brun foncé",
+          "material": "Iris",
+          "color": "#452F2C"
+        }
+      ]
+    },
+    {
+      "id": "eyebrows",
+      "label": "Sourcils",
+      "heading": "Forme des sourcils",
+      "framing": "face",
+      "items": [
+        {
+          "id": "soft",
+          "label": "Courbe douce",
+          "group": "SourcilsDoux"
+        },
+        {
+          "id": "arched",
+          "label": "Arquées",
+          "group": "SourcilsArques"
+        },
+        {
+          "id": "straight",
+          "label": "Droits",
+          "group": "SourcilsDroits"
+        },
+        {
+          "id": "bold",
+          "label": "Épais",
+          "group": "SourcilsDenses"
+        }
+      ],
+      "thumbnailFraming": "brows",
+      "thumbnailParts": [
+        "Visage"
+      ]
+    },
+    {
+      "id": "nose",
+      "label": "Nez",
+      "heading": "Forme du nez",
+      "framing": "face",
+      "items": [
+        {
+          "id": "straight",
+          "label": "Droit",
+          "group": "NezDroit"
+        },
+        {
+          "id": "fine",
+          "label": "Fin",
+          "group": "NezFin"
+        },
+        {
+          "id": "wide",
+          "label": "Large",
+          "group": "NezLarge"
+        },
+        {
+          "id": "upturned",
+          "label": "Retroussé",
+          "group": "NezRetrousse"
+        }
+      ],
+      "thumbnailFraming": "nose",
+      "thumbnailParts": [
+        "Visage"
+      ]
+    },
+    {
+      "id": "face",
+      "label": "Bouche",
+      "items": [
+        {
+          "id": "neutral",
+          "label": "Détendu",
+          "morph": "Sourire",
+          "weight": 0.0
+        },
+        {
+          "id": "smile",
+          "label": "Sourire",
+          "morph": "Sourire",
+          "weight": 1.0
+        },
+        {
+          "id": "half_smile",
+          "label": "Léger sourire",
+          "morph": "Sourire",
+          "weight": 0.42
+        },
+        {
+          "id": "pout",
+          "label": "Moue",
+          "morph": "Moue",
+          "weight": 1.0
+        }
+      ],
+      "framing": "face",
+      "heading": "Bouche et expression",
+      "thumbnailFraming": "mouth",
+      "thumbnailParts": [
+        "Visage",
+        "Sourire"
+      ]
+    },
+    {
+      "id": "outfit",
+      "label": "Hauts",
+      "railGroup": "clothes",
+      "items": [
+        {
+          "id": "knit",
+          "label": "Maille",
+          "group": "Pull"
+        },
+        {
+          "id": "jacket",
+          "label": "Blouson",
+          "group": "Blouson"
+        },
+        {
+          "id": "jacket_blue",
+          "label": "Veste",
+          "group": "Veste"
+        },
+        {
+          "id": "hoodie",
+          "label": "Sweat à capuche",
+          "group": "SweatCapuche"
+        },
+        {
+          "id": "biker",
+          "label": "Perfecto",
+          "group": "Perfecto"
+        },
+        {
+          "id": "tee",
+          "label": "T-shirt brique",
+          "group": "TShirt"
+        }
+      ],
+      "framing": "full",
+      "section": "wardrobe",
+      "heading": "Choisir un haut",
+      "thumbnailFraming": "upper",
+      "thumbnailParts": []
+    },
+    {
+      "id": "outfit_color",
+      "label": "Couleur du blouson",
+      "section": "wardrobe",
+      "paletteFor": "outfit",
+      "paletteItems": ["jacket"],
+      "items": [
+        {
+          "id": "original",
+          "label": "Terracotta",
+          "material": "Toile",
+          "color": "#AB5B43",
+          "tints": {"Coutures": "#75443D"}
+        },
+        {
+          "id": "wine",
+          "label": "Lie-de-vin",
+          "material": "Toile",
+          "color": "#784459",
+          "tints": {"Coutures": "#543143"}
+        },
+        {
+          "id": "indigo",
+          "label": "Indigo",
+          "material": "Toile",
+          "color": "#44587D",
+          "tints": {"Coutures": "#303D56"}
+        }
+      ]
+    },
+    {
+      "id": "trousers",
+      "label": "Pantalons",
+      "railGroup": "clothes",
+      "heading": "Choisir un pantalon",
+      "framing": "full",
+      "items": [
+        {
+          "id": "jeans",
+          "label": "Jean",
+          "group": "Jean"
+        },
+        {
+          "id": "cargo",
+          "label": "Cargo",
+          "group": "Cargo"
+        },
+        {
+          "id": "vinyl",
+          "label": "Vinyle prune",
+          "group": "PantalonVinyle"
+        }
+      ],
+      "section": "wardrobe",
+      "thumbnailFraming": "legs",
+      "thumbnailParts": []
+    },
+    {
+      "id": "shoes",
+      "label": "Chaussures",
+      "railGroup": "clothes",
+      "heading": "Choisir des chaussures",
+      "framing": "full",
+      "items": [
+        {
+          "id": "coral",
+          "label": "Baskets corail",
+          "group": "BasketsCorail"
+        },
+        {
+          "id": "black",
+          "label": "Baskets noires",
+          "group": "BasketsNoires"
+        },
+        {
+          "id": "boots",
+          "label": "Bottes plateforme",
+          "group": "BottesPlateforme"
+        }
+      ],
+      "section": "wardrobe",
+      "thumbnailFraming": "shoes",
+      "thumbnailParts": []
+    },
+    {
+      "id": "glasses",
+      "label": "Lunettes",
+      "items": [
+        {
+          "id": "none",
+          "label": "Sans",
+          "clear": true
+        },
+        {
+          "id": "round",
+          "label": "Rondes",
+          "group": "Lunettes"
+        },
+        {
+          "id": "square",
+          "label": "Rectangulaires",
+          "group": "LunettesRectangles"
+        }
+      ],
+      "framing": "face",
+      "section": "wardrobe",
+      "heading": "Choisir ses lunettes"
+    },
+    {
+      "id": "jewelry",
+      "label": "Bijoux",
+      "heading": "Choisir des bijoux",
+      "framing": "face",
+      "items": [
+        {
+          "id": "none",
+          "label": "Sans bijoux",
+          "clear": true
+        },
+        {
+          "id": "studs",
+          "label": "Clous argentés",
+          "group": "ClousArgent"
+        },
+        {
+          "id": "hoops",
+          "label": "Anneaux",
+          "group": "Anneaux"
+        }
+      ],
+      "section": "wardrobe",
+      "thumbnailFraming": "nose",
+      "thumbnailParts": [
+        "Visage",
+        "Oreille",
+        "Oreille2"
+      ]
+    }
   ]
 }

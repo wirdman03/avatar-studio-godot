@@ -110,6 +110,9 @@ func _validate_catalogue() -> bool:
 	for category in _catalogue["categories"]:
 		if not category is Dictionary or not category.get("id") is String or not category.get("label") is String or not category.get("items") is Array:
 			return false
+		for key_name in ["section", "sectionLabel", "railGroup", "railGroupLabel", "railLabel", "framing", "heading", "thumbnailFraming", "paletteFor", "palettePlacement"]:
+			if category.has(key_name) and not category[key_name] is String:
+				return false
 		var key: String = category["id"]
 		if key.is_empty() or _items.has(key):
 			return false
@@ -126,7 +129,30 @@ func _validate_catalogue() -> bool:
 		if not options.has(defaults.get(key)):
 			return false
 		_items[key] = options
-	return not _items.is_empty() and _items.size() == defaults.size()
+	return not _items.is_empty() and _items.size() == defaults.size() and _validate_palette_links()
+
+func _validate_palette_links() -> bool:
+	var targets: Dictionary = {}
+	for category: Dictionary in _catalogue["categories"]:
+		var target: String = category.get("paletteFor", "")
+		if not target.is_empty():
+			if target == category["id"] or not _items.has(target) or targets.has(target):
+				return false
+			targets[target] = category["id"]
+			var choices: Variant = category.get("paletteItems", [])
+			if not choices is Array:
+				return false
+			for choice in choices:
+				if not choice is String or not _items[target].has(choice):
+					return false
+		if not target.is_empty() or category.get("palettePlacement") == "preview":
+			for item: Dictionary in category["items"]:
+				if not _valid_color(item.get("color")):
+					return false
+	for palette_id in targets.values():
+		if targets.has(palette_id):
+			return false
+	return true
 
 func _validate_option(item: Dictionary, category: String, targets: Dictionary) -> bool:
 	var actions := ["group", "morph", "material", "clear"]
@@ -139,10 +165,8 @@ func _validate_option(item: Dictionary, category: String, targets: Dictionary) -
 	if not item[kind] is String:
 		return false
 	var name: String = item[kind]
-	var target := kind + ":" + name
-	if targets.has(target) and targets[target] != category:
+	if not _claim_target(kind, name, category, targets):
 		return false
-	targets[target] = category
 	match kind:
 		"group":
 			return _groups.get(name) != null and _groups[name] != _model
@@ -150,8 +174,26 @@ func _validate_option(item: Dictionary, category: String, targets: Dictionary) -
 			var value: Variant = item.get("weight")
 			return _morphs.has(name) and (value is float or value is int) and is_finite(float(value)) and float(value) >= 0.0 and float(value) <= 1.0
 		"material":
-			return _materials.has(name) and item.get("color") is String and Color.html_is_valid(item["color"])
+			if not _materials.has(name) or not _valid_color(item.get("color")):
+				return false
+			var extra: Variant = item.get("tints", {})
+			if not extra is Dictionary or extra.has(name):
+				return false
+			for material in extra:
+				if not _materials.has(material) or not _valid_color(extra[material]) or not _claim_target(kind, material, category, targets):
+					return false
+			return true
 	return false
+
+func _claim_target(kind: String, name: String, category: String, targets: Dictionary) -> bool:
+	var target := kind + ":" + name
+	if targets.has(target) and targets[target] != category:
+		return false
+	targets[target] = category
+	return true
+
+func _valid_color(value: Variant) -> bool:
+	return value is String and Color.html_is_valid(value)
 
 func get_display_name() -> String:
 	return str(_catalogue.get("name", "Avatar"))
@@ -204,5 +246,11 @@ func _apply() -> void:
 			for entry in _morphs[item["morph"]]:
 				entry[0].set_blend_shape_value(entry[1], item["weight"])
 		elif item.has("material"):
-			for entry in _materials[item["material"]]:
-				entry[0].albedo_color = Color.html(item["color"])
+			_tint(item["material"], item["color"])
+			var extra: Dictionary = item.get("tints", {})
+			for material in extra:
+				_tint(material, extra[material])
+
+func _tint(material: String, color: String) -> void:
+	for entry in _materials[material]:
+		entry[0].albedo_color = Color.html(color)
