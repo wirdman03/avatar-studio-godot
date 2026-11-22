@@ -1,0 +1,28 @@
+{
+  "name": "Ari",
+  "model": "ari.tscn",
+  "default": {"hair": "swept", "face": "neutral", "skin": "copper", "outfit": "knit", "glasses": "none"},
+  "categories": [
+    {"id": "hair", "label": "Cheveux", "items": [
+      {"id": "swept", "label": "Balayés", "group": "CheveuxBalayes"},
+      {"id": "waves", "label": "Ondulés", "group": "CheveuxOndules"}
+    ]},
+    {"id": "face", "label": "Visage", "items": [
+      {"id": "neutral", "label": "Détendu", "morph": "Sourire", "weight": 0.0},
+      {"id": "smile", "label": "Sourire", "morph": "Sourire", "weight": 1.0}
+    ]},
+    {"id": "skin", "label": "Teint", "items": [
+      {"id": "copper", "label": "Cuivré", "material": "Peau", "color": "#C68158"},
+      {"id": "warm", "label": "Clair", "material": "Peau", "color": "#E6AC88"},
+      {"id": "deep", "label": "Foncé", "material": "Peau", "color": "#81513E"}
+    ]},
+    {"id": "outfit", "label": "Tenue", "items": [
+      {"id": "knit", "label": "Maille", "group": "Pull"},
+      {"id": "jacket", "label": "Blouson", "group": "Blouson"}
+    ]},
+    {"id": "glasses", "label": "Lunettes", "items": [
+      {"id": "none", "label": "Sans", "clear": true},
+      {"id": "round", "label": "Rondes", "group": "Lunettes"}
+    ]}
+  ]
+}

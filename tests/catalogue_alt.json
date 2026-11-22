@@ -1,0 +1,11 @@
+{
+  "name": "Second modèle",
+  "model": "avatar_alt.tscn",
+  "default": {"shape": "square"},
+  "categories": [
+    {"id": "shape", "label": "Forme", "items": [
+      {"id": "square", "label": "Carré", "group": "BlocCarre"},
+      {"id": "slant", "label": "Incliné", "group": "BlocIncline"}
+    ]}
+  ]
+}

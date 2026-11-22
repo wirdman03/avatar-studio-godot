@@ -1,0 +1,19 @@
+config_version=5
+
+[application]
+config/name="Avatar Studio · Démo"
+run/main_scene="res://demo/demo.tscn"
+config/features=PackedStringArray("4.3", "GL Compatibility")
+
+[display]
+window/size/viewport_width=460
+window/size/viewport_height=872
+window/size/window_width_override=460
+window/size/window_height_override=872
+window/size/min_width=320
+window/size/min_height=620
+window/stretch/mode="canvas_items"
+
+[rendering]
+renderer/rendering_method="gl_compatibility"
+environment/defaults/default_clear_color=Color(0.051, 0.099, 0.104, 1)

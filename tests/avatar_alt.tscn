@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3]
+[sub_resource type="BoxMesh" id="Box"]
+[node name="DeuxiemeModele" type="Node3D"]
+[node name="BlocCarre" type="MeshInstance3D" parent="."]
+mesh = SubResource("Box")
+[node name="BlocIncline" type="MeshInstance3D" parent="."]
+rotation = Vector3(0, 0.3, 0)
+mesh = SubResource("Box")
